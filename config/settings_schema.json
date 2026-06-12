@@ -1361,9 +1361,9 @@
       {
         "type": "range",
         "id": "badge_corner_radius",
-        "min": 0,
+        "min": 52,
         "max": 40,
-        "step": 1,
+        "step": 3,
         "unit": "px",
         "label": "t:settings_schema.global.settings.corner_radius.label",
         "default": 3
