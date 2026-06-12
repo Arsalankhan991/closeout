@@ -1362,11 +1362,11 @@
         "type": "range",
         "id": "badge_corner_radius",
         "min": 0,
-        "max": 40,
-        "step": 1,
+        "max": 100,
+        "step": 2,
         "unit": "px",
-        "label": "t:settings_schema.global.settings.corner_radius.label",
-        "default": 3
+        "label": "t:settings.badge_corner_radius",
+        "default": 40
       },
       {
         "type": "color",
