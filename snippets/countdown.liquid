@@ -1,0 +1,310 @@
+{% capture time_check %}
+{% for tag in product.tags %}
+{%if tag contains 'Time_' %}
+{% assign tag_time = tag | split : 'Time_' | last %}
+{{ tag_time }}
+{% endif %}
+{%  endfor %}
+{% endcapture %}
+{% if tag_time %}
+  <div class="flip-countdown simple-countdown">
+    {% render 'icon-clock' %}
+    <div class="countdown-text quick-add-hidden">{{ 'sections.countdown.countdown_text' | t }}</div>
+    <div
+      class="countdown-container flip-countdown countdown-block content-container"
+      data-countdown="{{ tag_time }}"
+    ></div>
+  </div>
+
+  <style>
+        .card__inner > .flip-countdown {
+          display: flex;
+          margin: 0;
+          justify-content: center;
+          margin-top: -2px;
+          position: absolute;
+          top: auto;
+          bottom: 5px;
+          left: 0;
+          right: 0;
+          margin: auto;
+          width: max-content;
+          min-width: auto;
+          align-items: center;
+          transition: all 0.5s ease-in-out;
+          gap: 5px;
+        }
+        .countdown-container.countdown-block {
+          border: 0;
+          display: block;
+          position: relative;
+          padding: 0;
+          margin-bottom: 0;
+          margin-top: -1px;
+          background: #fff;
+          -webkit-box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+          padding: 5px 6px;
+          border-radius: 5px;
+          color: #da3f3f;
+          min-width: max-content;
+        }
+        .card-wrapper:hover .card__inner .flip-countdown {
+          display: none;
+          transition: all 0.5s ease-in-out;
+        }
+        .countdown-block > span {
+          width: auto;
+          display: inline-flex;
+          text-align: center;
+          color: #da3f3f;
+          position: relative;
+          margin-inline: 8px;
+          justify-content: center;
+          align-items: center;
+          gap: 1px;
+        }
+        .flip-countdown .icon {
+          width: 14px;
+          height: 25px;
+          fill: red;
+          display: none;
+        }
+        .countdown-block > span:first-child {
+          margin-inline-start: 5px;
+        }
+        .countdown-block > span:last-child {
+          margin-inline-end: 5px;
+        }
+        .countdown-block > span::after {
+          content: ":";
+          position: absolute;
+          right: -10px;
+          left: auto;
+          top: 0px;
+          font-size: 13px;
+          font-weight: 500;
+        }
+        .countdown-block > span:last-child::after {
+          display: none;
+        }
+        .countdown-block .countdown .time {
+          width: auto;
+          display: inline-block;
+          vertical-align: top;
+          font-size: 12px;
+          line-height: inherit;
+          font-weight: 600;
+          line-height: 18px;
+          letter-spacing: 0;
+        }
+        .countdown-block span span.time-txt {
+          text-align: center;
+          width: auto;
+          font-size: 0;
+          font-weight: 500;
+          letter-spacing: .3px;
+        }
+        .countdown-block span span.time-txt:first-letter {
+          font-size: 13px;
+          line-height: 20px;
+          text-transform: capitalize;
+        }
+        .flip-countdown .counter-text {
+          color: rgb(var(--color-base-outline-button-labels));
+          margin-block: 20px;
+          display: block;
+        }
+        .countdown-text{
+          color: #da3f3f;
+          font-weight: 500;
+          padding: 0 0 7px;
+          clear: both;
+          font-size: 14px;
+          line-height: initial;
+          display: none;
+        }
+    /*product-page */
+    .product.grid .product__info-container .countdown-container.countdown-block {
+        margin: 0;
+        border: 0;
+        background-color: transparent;
+        padding: 0;
+        box-shadow: none;
+    }
+    .product.grid .product__info-container .flip-countdown.simple-countdown {
+      position: relative;
+      left: 0;
+      margin: 0;
+      right: auto;
+      justify-content: flex-start;
+      flex-direction: column;
+      bottom: 0;
+    }
+    .product.grid .product__info-container .flip-countdown.simple-countdown .countdown-block .countdown .time {
+    	font-size: 16px;
+    	min-width: 46px;
+    	min-height: 46px;
+        max-width: 46px;
+    	max-height: 46px;
+    	border: 1px solid var(--color-base-border);
+    	border-radius: 5px;
+    	line-height: initial;
+    	padding: 9px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 500;
+    }
+    .product.grid .product__info-container .flip-countdown.simple-countdown .countdown-block > span {
+      color: var(--color-base-accent-2);
+    }
+    /* .product.grid .product__info-container .flip-countdown.simple-countdown .countdown-block > span:last-child  {
+      color: red;
+    } */
+    .product.grid .product__info-container .flip-countdown.simple-countdown .countdown-block > span:last-child .time {
+      border: 1px solid #da3f3f;
+      color: #da3f3f;
+      font-weight: 600;
+    }
+    .product.grid .product__info-container .flip-countdown.simple-countdown .countdown-block > span {
+      flex-direction: column;
+    }
+    .product.grid .product__info-container .flip-countdown.simple-countdown .countdown-block > span::after {
+      top: 8px;
+    }
+    .product.grid .product__info-container .flip-countdown.simple-countdown .countdown-text{
+      display: block;
+      color: var(--color-base-accent-2);
+    }
+    .product.grid .product__info-container .flip-countdown.simple-countdown span:first-child {
+    	margin-inline-start: 0;
+    }
+    .product.grid .product__info-container .flip-countdown .icon {
+    	display: none;
+    }
+    .product.grid .product__info-container .countdown-block span span.time-txt {
+      display: block;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    /* @media screen and (max-width: 1649px){
+      .countdown-block > span {
+        margin-inline: 9px;
+      }
+      .countdown-block > span::after {
+      	right: -11px
+      }
+      .countdown-block > span:first-child {
+      	margin-inline-start: 5px;
+      }
+      .countdown-block .countdown .time {
+        font-size: 15px;
+      }
+    }
+
+    @media (max-width: 1269px) and (min-width: 990px) {
+      .countdown-block > span:first-child {
+      	margin-inline-start: 6px;
+      }
+      .countdown-block > span {
+      	margin-inline: 6px;
+      }
+      .countdown-block > span:last-child {
+      	margin-inline-end: 6px;
+      }
+      .countdown-block > span::after {
+      	right: -8px;
+      }
+    }
+    @media (max-width: 989px) and (min-width: 490px) {
+      .countdown-block > span {
+      	margin-inline: 6px;
+      }
+      .countdown-block > span:last-child {
+    	margin-inline-end: 8px;
+      }
+      .countdown-block > span:first-child {
+    	margin-inline-start: 8px;
+      }
+      .countdown-block > span::after {
+        right: -7px;
+      }
+    } */
+    @media screen and (max-width: 1549px){
+      .countdown-block > span {
+      	margin-inline: 5px;
+      }
+      .countdown-block > span::after {
+      	right: -8px
+      }
+    }
+    @media screen and (max-width: 989px) {
+      .countdown-container.countdown-block {
+        padding : 5px 4px;
+      }
+    }
+    @media screen and (max-width: 650px) {
+      .countdown-container.countdown-block {
+        padding : 6px 0px;
+      }
+      .countdown-block > span {
+      	margin-inline: 5px;
+      }
+      .countdown-block .countdown .time {
+        font-size: 12px;
+      }
+    }
+    @media (max-width: 479px) {
+      .product.grid .product__info-container .countdown-block > span:first-child {
+      	margin-inline-start: 6px;
+      }
+      .product.grid .product__info-container .countdown-block > span {
+      	margin-inline: 6px;
+      }
+      .product.grid .product__info-container .countdown-block > span:last-child {
+      	margin-inline-end: 6px;
+      }
+      .product.grid .product__info-container .countdown-block > span::after {
+      	right: -8px;
+      }
+      .product.grid .product__info-container .countdown-block .countdown .time {
+      	font-size: 16px;
+      	line-height: 20px;
+      }
+      .countdown-block > span:first-child {
+      	margin-inline-start: 0;
+      }
+      .flip-countdown .icon {
+      	display: none;
+      }
+      .countdown-block > span::after {
+      	right: -10px;
+      }
+      .countdown-block > span {
+      	margin-inline: 7px;
+      }
+      .countdown-block span span.time-txt {
+    	display: none;
+      }
+    }
+    @media screen and (max-width: 380px) {
+      .countdown-block > span {
+    	margin-inline: 5px;
+      }
+      .countdown-block > span::after {
+    	right: -7px;
+      }
+      .countdown-block > span:last-child {
+    	margin-inline-end: 0px;
+      }
+      .countdown-container.countdown-block {
+    	padding: 4px 8px;
+      }
+      .countdown-block > span::after {
+        top: -2px;
+        font-size: 14px;
+      }
+    }
+  </style>
+{% endif %}

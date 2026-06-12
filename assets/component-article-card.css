@@ -1,0 +1,210 @@
+@media screen and (max-width: 749px) {
+  .articles-wrapper .article {
+    width: 100%;
+  }
+}
+.blog__post .card .card__inner .card__content,
+.main-blog .card .card__inner .card__content {
+  display: none;
+}
+.article {
+  display: flex;
+  align-items: center;
+}
+.article-card__image {
+  border-radius: 5px;
+}
+.blog .card__inner.ratio::before,
+.template-search .article-card-wrapper .ratio::before {
+  padding-bottom: 63.35766423357664%
+}
+.article.grid__item {
+  padding: 0;
+}
+.article-card .card__heading a {
+  font-size: 1.8rem;
+  letter-spacing: 0.3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.grid--peek .article-card {
+  box-sizing: border-box;
+}
+
+.article-card__image-wrapper > a {
+  display: block;
+}
+
+.article-card__title {
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.article-card__title a:after {
+  bottom: 0;
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+.featured-blog__description.body.rte {
+  font-size: 14px;
+  font-weight: 400;
+}
+.article-card__link.link {
+  padding: 0;
+  background: transparent;
+  color: var(--color-base-accent-2);
+  min-width: 0;
+  min-height: 0;
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-decoration: underline;
+  border-radius: 0;
+  display: inline-block;
+  line-height: 18px;
+}
+.article-card__link.link::before {
+  content: none;
+}
+.article-card__link.link:hover {
+  color: var(--color-base-text);
+  text-decoration: none;
+}
+.article-card__link {
+  text-underline-offset: 0.3rem;
+}
+.article-card-wrapper .caption-with-letter-spacing {
+  position: relative;
+  padding: 0;
+}
+.card.article-card .card__information .article-card__info {
+  padding: 2rem 0rem 1rem;
+}
+.card__content .article-card__info.caption-with-letter-spacing time {
+  padding-top: 0rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--color-base-accent-2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.card.article-card .card__content,
+.card.article-card .card__information {
+  padding: 0px;
+}
+.article-card__info .icon {
+  width: 15px;
+  height: 16px;
+  vertical-align: middle;
+}
+.article-card__footer {
+  letter-spacing: 0.1rem;
+  font-size: 1.4rem;
+}
+.blog .title-wrapper-with-link {
+  align-items: flex-start;
+  padding: 0;
+}
+.article-card__footer:last-child {
+  margin-top: auto;
+}
+.article-card .circle-divider .icon {
+  fill: var(--color-base-accent-3);
+  margin-right: 5px;
+}
+.article-card .circle-divider {
+  display: flex;
+  align-items: center;
+}
+.article-card__excerpt {
+  width: 100%;
+  margin: 0rem;
+  color: var(--color-base-text);
+  line-height: 2.2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-bottom: 5px;
+}
+.article-card__link:not(:only-child) {
+  margin-right: 3rem;
+}
+@media screen and (max-width: 1269px){
+  .card.article-card .card__information .article-card__info {
+	padding: 1.5rem 0rem 1rem;
+}
+}
+@media screen and (max-width: 989px){
+  .card.article-card .card__information .article-card__info {
+	padding: 1.5rem 0rem 0.5rem;
+}
+}
+@media screen and (min-width: 990px) {
+  .article-card__link:not(:only-child) {
+    margin-right: 4rem;
+  }
+}
+
+.article-card__image--small .ratio::before {
+  padding-bottom: 11rem;
+}
+
+.article-card__image--medium .ratio::before {
+  padding-bottom: 22rem;
+}
+
+.article-card__image--large .ratio::before {
+  padding-bottom: 33rem;
+}
+
+@media screen and (min-width: 750px) {
+  .article-card__image--small .ratio::before {
+    padding-bottom: 14.3rem;
+  }
+
+  .article-card__image--medium .ratio::before {
+    padding-bottom: 21.9rem;
+  }
+
+  .article-card__image--large .ratio::before {
+    padding-bottom: 27.5rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .article-card__image--small .ratio::before {
+    padding-bottom: 17.7rem;
+  }
+
+  .article-card__image--medium .ratio::before {
+    padding-bottom: 30.7rem;
+  }
+
+  .article-card__image--large .ratio::before {
+    padding-bottom: 40.7rem;
+  }
+}
+
+/* check for flexbox gap in older Safari versions */
+@supports not (inset: 10px) {
+  .articles-wrapper.grid {
+    margin: 0 0 5rem 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .articles-wrapper.grid {
+      margin-bottom: 7rem;
+    }
+  }
+}

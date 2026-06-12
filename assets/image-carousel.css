@@ -1,0 +1,25 @@
+.image-carousel-bar__item {
+  list-style: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+.image-carousel-bar__image {
+  max-width: 100%;
+  position: relative;
+  margin: 0 auto;
+  border-radius: var(--buttons-radius);
+}
+.image-carousel-bar.owl-carousel.owl-loaded {
+  padding: 0;
+  margin: 0 -14px;
+}
+.image-carousel-bar.owl-carousel .owl-stage-outer {
+  text-align: center;
+}
+
+.image-carousel .title {
+  font-size: 2.8rem;
+  text-align: center;
+  line-height: 3.2rem;
+  margin-bottom: 3rem;
+}

@@ -1,0 +1,403 @@
+{% doc %}
+  @prompt
+    make a floating box with this on every page" <div class="xbfsbu-block" data-id="d25ff6f3bf8f497c86449647abb912a3"></div> ", where is the progress bar add in it
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-floating-box-{{ ai_gen_id }} {
+    position: fixed;
+    bottom: {{ block.settings.bottom_position }}px;
+    {% if block.settings.horizontal_position == 'left' %}
+      left: {{ block.settings.side_offset }}px;
+    {% else %}
+      right: {{ block.settings.side_offset }}px;
+    {% endif %}
+    z-index: {{ block.settings.z_index }};
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.padding }}px;
+    border-radius: {{ block.settings.border_radius }}px;
+    box-shadow: 0 {{ block.settings.shadow_vertical }}px {{ block.settings.shadow_blur }}px rgba(0, 0, 0, {{ block.settings.shadow_opacity }});
+    width: {{ block.settings.box_width }}px;
+    max-width: calc(100vw - 40px);
+    display: block;
+  }
+
+  .ai-floating-box-content-{{ ai_gen_id }} {
+    margin-bottom: {{ block.settings.progress_spacing }}px;
+  }
+
+  .ai-progress-bar-container-{{ ai_gen_id }} {
+    width: 100%;
+    height: {{ block.settings.progress_height }}px;
+    background-color: {{ block.settings.progress_bg_color }};
+    border-radius: {{ block.settings.progress_border_radius }}px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .ai-progress-bar-fill-{{ ai_gen_id }} {
+    height: 100%;
+    background-color: {{ block.settings.progress_fill_color }};
+    border-radius: {{ block.settings.progress_border_radius }}px;
+    transition: width 0.3s ease;
+    width: 0%;
+  }
+
+  .ai-progress-text-{{ ai_gen_id }} {
+    margin-top: {{ block.settings.text_spacing }}px;
+    font-size: {{ block.settings.text_size }}px;
+    color: {{ block.settings.text_color }};
+    text-align: {{ block.settings.text_alignment }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-floating-box-{{ ai_gen_id }} {
+      bottom: {{ block.settings.mobile_bottom_position }}px;
+      {% if block.settings.horizontal_position == 'left' %}
+        left: {{ block.settings.mobile_side_offset }}px;
+      {% else %}
+        right: {{ block.settings.mobile_side_offset }}px;
+      {% endif %}
+      width: {{ block.settings.mobile_box_width }}px;
+    }
+  }
+{% endstyle %}
+
+<floating-box-{{ ai_gen_id }} class="ai-floating-box-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-floating-box-content-{{ ai_gen_id }}">
+    <div class="xbfsbu-block" data-id="d25ff6f3bf8f497c86449647abb912a3"></div>
+  </div>
+  
+  {% if block.settings.show_progress_bar %}
+    <div class="ai-progress-bar-container-{{ ai_gen_id }}">
+      <div class="ai-progress-bar-fill-{{ ai_gen_id }}" data-progress="{{ block.settings.progress_value }}"></div>
+    </div>
+    
+    {% if block.settings.show_progress_text %}
+      <div class="ai-progress-text-{{ ai_gen_id }}">
+        {{ block.settings.progress_text }}
+      </div>
+    {% endif %}
+  {% endif %}
+</floating-box-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class FloatingBox{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.style.display = 'block';
+        this.initProgressBar();
+      }
+
+      initProgressBar() {
+        const progressBar = this.querySelector('.ai-progress-bar-fill-{{ ai_gen_id }}');
+        if (progressBar) {
+          const targetProgress = parseInt(progressBar.getAttribute('data-progress')) || 0;
+          setTimeout(() => {
+            progressBar.style.width = targetProgress + '%';
+          }, 100);
+        }
+      }
+    }
+
+    customElements.define('floating-box-{{ ai_gen_id }}', FloatingBox{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Floating box",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Position"
+    },
+    {
+      "type": "select",
+      "id": "horizontal_position",
+      "label": "Horizontal position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "range",
+      "id": "bottom_position",
+      "label": "Bottom position",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "side_offset",
+      "label": "Side offset",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "mobile_bottom_position",
+      "label": "Mobile bottom position",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "mobile_side_offset",
+      "label": "Mobile side offset",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Size"
+    },
+    {
+      "type": "range",
+      "id": "box_width",
+      "label": "Desktop width",
+      "min": 100,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "default": 300
+    },
+    {
+      "type": "range",
+      "id": "mobile_box_width",
+      "label": "Mobile width",
+      "min": 100,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "default": 280
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Padding",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "shadow_vertical",
+      "label": "Shadow vertical offset",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "shadow_blur",
+      "label": "Shadow blur",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "shadow_opacity",
+      "label": "Shadow opacity",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "default": 0.1
+    },
+    {
+      "type": "header",
+      "content": "Progress bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_progress_bar",
+      "label": "Show progress bar",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "progress_value",
+      "label": "Progress value",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "progress_height",
+      "label": "Height",
+      "min": 4,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "progress_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "color",
+      "id": "progress_bg_color",
+      "label": "Background color",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "color",
+      "id": "progress_fill_color",
+      "label": "Fill color",
+      "default": "#febd69"
+    },
+    {
+      "type": "range",
+      "id": "progress_spacing",
+      "label": "Spacing below content",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Progress text"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_progress_text",
+      "label": "Show progress text",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "progress_text",
+      "label": "Text",
+      "default": "50% Complete"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#666666"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "text_spacing",
+      "label": "Spacing above text",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Advanced"
+    },
+    {
+      "type": "range",
+      "id": "z_index",
+      "label": "Z-index",
+      "min": 100,
+      "max": 2000,
+      "step": 100,
+      "default": 1000
+    }
+  ],
+  "presets": [
+    {
+      "name": "Floating box"
+    }
+  ]
+}
+{% endschema %}

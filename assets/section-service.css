@@ -1,0 +1,108 @@
+.services {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+.service {
+  display: flex;
+  text-decoration: none;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  text-align: left;
+  gap: 15px;
+}
+.service.service-5::after {
+  display: none;
+}
+.service-block .services-wrapper {
+  border-radius: var(--border-radius);
+}
+/* .service::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  border-right: 1px solid rgba(255, 255, 255, 0.36);
+  right: -95px;
+  height: 38px;
+  top: 6px;
+}
+.service.service-4::after {
+  content: none;
+} */
+.service-icon {
+  display: inline-block !important;
+  height: 45px;
+  width: 36px;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-transition: all 0.5s ease 0s;
+  -moz-transition: all 0.5s ease 0s;
+  -o-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+}
+.service-block .content-container .services-wrapper {
+  border-bottom: var(--border-width) solid var(--color-base-border);
+  border-radius: 0;
+}
+.service:hover .service-icon {
+  transform: translateY(-5px);
+}
+.service-title {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--color-foreground);
+  line-height: 28px;
+}
+.service-subtitle {
+  color: var(--color-foreground);
+  font-size: 14px;
+}
+@media screen and (max-width: 1549px) {
+  .service::after {
+    right: -10%;
+  }
+}
+@media screen and (max-width: 1449px) {
+  .service::after {
+    display: none;
+  }
+}
+@media screen and (max-width: 1269px) {
+  /* .service {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  } */
+  .service::after {
+    display: none;
+  }
+  .service-icon {
+    margin-right: 0;
+  }
+}
+/* @media screen and (max-width: 989px) {
+  .services {
+    display: flex;
+    width: 100%;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .service {
+    float: left;
+    width: calc(33.33% - 20px);
+    padding: 0;
+  }
+}
+@media screen and (max-width: 575px) {
+  .service {
+    width: calc(50% - 20px);
+  }
+}
+@media screen and (max-width: 479px) {
+  .service {
+    width: 100%;
+  }
+} */
