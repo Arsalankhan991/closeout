@@ -1359,15 +1359,15 @@
         "label": "t:settings_schema.badges.settings.position.label"
       },
       {
-        "type": "range",
-        "id": "badge_corner_radius",
-        "min": 10,
-        "max": 0,
-        "step": 1,
-        "unit": "px",
-        "label": "t:settings.badge_corner_radius",
-        "default": 4
-      },
+  "type": "range",
+  "id": "badge_corner_radius",
+  "min": 0,
+  "max": 10,
+  "step": 1,
+  "unit": "px",
+  "label": "t:settings.badge_corner_radius",
+  "default": 4
+},
       {
         "type": "color",
         "id": "sale_badge_color_scheme1",
