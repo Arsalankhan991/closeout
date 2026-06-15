@@ -1359,33 +1359,21 @@
         "label": "t:settings_schema.badges.settings.position.label"
       },
       {
-<<<<<<< HEAD
-        "type": "range",
-        "id": "badge_corner_radius",
-        "min": 0,
-        "max": 40,
-        "step": 1,
-        "unit": "px",
-        "label": "t:settings_schema.global.settings.corner_radius.label",
-        "default": 3
-      },
-=======
-      "type": "range",
-      "id": "badge_corner_radius",
-      "min": 0,
-      "max": 40,
-      "step": 1,
-      "unit": "px",
-      "label": "t:settings.badge_corner_radius",
-      "default": 4
-    },
->>>>>>> 72511b5ff5bdb760d6f822b0dac76670f4625bea
-      {
-        "type": "color",
-        "id": "sale_badge_color_scheme1",
-        "default": "#FEBD69",
-        "label": "t:settings_schema.badges.settings.sale_badge_color_scheme1.label"
-      },
+  "type": "range",
+  "id": "badge_corner_radius",
+  "min": 0,
+  "max": 40,
+  "step": 1,
+  "unit": "px",
+  "label": "t:settings.badge_corner_radius",
+  "default": 4
+},
+{
+  "type": "color",
+  "id": "sale_badge_color_scheme1",
+  "default": "#FEBD69",
+  "label": "t:settings_schema.badges.settings.sale_badge_color_scheme1.label"
+},
       {
         "type": "color",
         "id": "sold_out_badge_color_scheme1",
