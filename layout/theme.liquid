@@ -233,6 +233,7 @@
     {%- endunless -%}
     {%- unless settings.type_header_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
+      <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
     {%- endunless -%}
 
     {%- if settings.predictive_search_enabled -%}
@@ -357,6 +358,8 @@
       }
     </script>
     <a href="#" class="top_button" title="Back to top" style="display: none;">
+      {% include 'tm-breadcrumbs' %}
+{% include 'icon-caret' %}
       {% include 'icon-caret' %}
     </a>
     <script src="{{ 'wishlist.js' | asset_url }}" defer="defer"></script>
