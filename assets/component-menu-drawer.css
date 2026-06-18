@@ -298,6 +298,7 @@ details[open].menu-opening > .menu-drawer__submenu {
   padding: 2rem;
   background-color: rgba(var(--color-foreground), 0.03);
   position: relative;
+  /* position: relative; */
 }
 
 .menu-drawer__account {
