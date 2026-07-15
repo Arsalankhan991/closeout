@@ -160,7 +160,7 @@
         "17c832b8-2b75-481e-862e-1a889647875c": {
           "type": "image",
           "settings": {
-            "subbanner": "shopify://shop_images/sub-banner-1.jpg",
+            "subbanner": "shopify://shop_images/Frame_19.png",
             "heading": "<p>up to 20% off</p>",
             "subheading": "<p>boAt Rockerz<br/><strong>On Headphones</strong></p>",
             "description": "<p>From: <strong>$77.00</strong></p>",
@@ -173,7 +173,7 @@
         "83793238-6535-42ec-9f85-df105da82dab": {
           "type": "image",
           "settings": {
-            "subbanner": "shopify://shop_images/sub-banner-3_8d2b398e-4e02-43da-a0f9-c15057506ccd.jpg",
+            "subbanner": "shopify://shop_images/Frame-20.png",
             "heading": "<p>up to 30% off</p>",
             "subheading": "<p>Best Stylish<br/><strong>Women's Glasses</strong></p>",
             "description": "<p>From: <strong>$49.00</strong></p>",
@@ -186,7 +186,7 @@
         "b04642ff-199f-4d19-a409-111333239f67": {
           "type": "image",
           "settings": {
-            "subbanner": "shopify://shop_images/sub-banner-2_2265e333-7421-447c-aca4-6f867a151438.jpg",
+            "subbanner": "shopify://shop_images/Frame_18.png",
             "heading": "<p>up to 35% off</p>",
             "subheading": "<p>Wooden Bazar<br/><strong>Raoul Arm Chair</strong></p>",
             "description": "<p>From: <strong>$99.00</strong></p>",
@@ -482,6 +482,7 @@
         "show_description": false,
         "description_style": "body",
         "banner_position": "left",
+        "image": "shopify://shop_images/Frame_17.png",
         "banner_text": "<p>New Arrival</p>",
         "banner_heading": "<p>The Recently Added Item<br/>In Our Store</p>",
         "button_label": "",
