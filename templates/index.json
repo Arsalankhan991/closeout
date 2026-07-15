@@ -649,6 +649,7 @@
         "image_98JUqz": {
           "type": "image",
           "settings": {
+            "subbanner": "shopify://shop_images/image_5.png",
             "heading": "<p>Discount Up To 40 % Off</p>",
             "subheading": "<p>Vivo V40 Pro 5G V2347 Ganges<br/><strong>Blue 256GB 8GB RAM</strong></p>",
             "description": "",
